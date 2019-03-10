@@ -19,7 +19,7 @@ export default new Router({
       path: '/',
       name: 'inner',
       component: () => import('../views/inner'),
-      // children: [...innerRoutes]
+      children: [...innerRoutes]
     }
   ]
 })

@@ -1,14 +1,16 @@
 <template>
   <v-app>
-    <div>
-      <router-view/>
-    </div>
+    <v-content>
+      <v-container>
+        signup
+      </v-container>
+    </v-content>
   </v-app>
 </template>
 
 <script>
 // @ is an alias to /src
 export default {
-  name: 'inner'
+  name: 'signup'
 }
 </script>
