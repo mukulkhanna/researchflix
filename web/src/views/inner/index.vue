@@ -8,9 +8,6 @@
           <v-flex class="text-wrapper">
             <v-text-field color="grey darken-2" flat clearable placeholder="Search" solo append-icon="search"></v-text-field>
           </v-flex>
-          <v-flex>
-            {{offsetTop}}
-          </v-flex>
         </v-layout>
         <v-spacer></v-spacer>
         <v-toolbar-items class="hidden-xs-only btn-wrapper">

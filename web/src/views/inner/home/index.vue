@@ -9,13 +9,13 @@
                 Browse
               </v-flex>
               <v-flex mt-4 text-xs-center>
-                <v-layout row wrap align-center>
+                <v-layout row wrap align-center justify-center>
                   <v-flex md1>
                     <v-btn icon large v-if="!paperView">
                       <v-icon x-large>arrow_left</v-icon>
                     </v-btn>
                   </v-flex>
-                  <v-flex md10 style="display:flex;overflow-x:auto;position:relative" v-if="!paperView">
+                  <v-flex md10 style="display:flex;overflow-x:auto;position:relative;" v-if="!paperView">
                     <div v-for="(paper,i) in papers" :key="i" class="paper-browse">
                       <img src="https://i1.rgstatic.net/publication/2255973_Access_and_Retrieval_from_Image_Databases_Using_Image_Thumbnails/links/5498b60f0cf2eeefc30f9c6e/largepreview.png" alt="" style="height:100%">
                       <div class="paper-arrow">
@@ -25,16 +25,16 @@
                       </div>
                     </div>
                   </v-flex>
-                  <v-flex md10 v-else>
+                  <v-flex md9 v-else>
                     <div class="paper-details text-xs-left" v-if="paperView">
                       <v-layout row wrap fill-height>
-                        <v-flex md2 style="position:relative;border:1px inset rgba(0,0,0,0.2);">
+                        <v-flex md3 style="position:relative;border:1px inset rgba(0,0,0,0.2);">
                           <v-btn color="grey lighten-1" style="position:absolute;top:0;left:0" @click="paperView=false" icon>
                             <v-icon>chevron_left</v-icon>
                           </v-btn>
                           <img src="https://i1.rgstatic.net/publication/2255973_Access_and_Retrieval_from_Image_Databases_Using_Image_Thumbnails/links/5498b60f0cf2eeefc30f9c6e/largepreview.png" alt="" style="width:100%">
                         </v-flex>
-                        <v-flex md10 pa-3 class="grey lighten-2">
+                        <v-flex md9 pa-3 class="grey lighten-2">
                           <v-layout column>
                             <v-flex>
                               <v-layout row wrap align-center>
@@ -46,14 +46,17 @@
                                 </v-flex>
                               </v-layout>
                             </v-flex>
-                            <v-flex>
+                            <v-flex mt-2 pt-1>
                               <span class="font-weight-bold">Author(s):</span>
                               <span v-for="(author,j) in selectedPaper.authors" :key="j">
                                 {{author}}<span v-if="j<selectedPaper.authors.length-1">, </span>
                               </span>
                             </v-flex>
                             <v-flex mt-2 pt-1>
-                              {{selectedPaper.abstract}}
+                              <span class="font-weight-bold">Tag(s):</span>
+                              <span v-for="(tag,j) in selectedPaper.tags" :key="j">
+                                {{tag}}<span v-if="j<selectedPaper.tags.length-1">, </span>
+                              </span>
                             </v-flex>
                           </v-layout>
                         </v-flex>
@@ -98,14 +101,12 @@ export default {
   data () {
     return {
       papers: [
-        { pid: 1, title: 'abs', authors: ['aditya', 'mukul'], abstract: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id elementum mauris. Curabitur viverra quis urna sit amet molestie. Aenean imperdiet, diam at vestibulum vulputate, erat lectus semper tortor, vel rutrum risus velit nec risus. Sed a lorem porttitor, ultrices risus vitae, sollicitudin dui.' },
-        { pid: 2, title: 'abs', authors: ['aditya', 'mukul'], abstract: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id elementum mauris. Curabitur viverra quis urna sit amet molestie. Aenean imperdiet, diam at vestibulum vulputate, erat lectus semper tortor, vel rutrum risus velit nec risus. Sed a lorem porttitor, ultrices risus vitae, sollicitudin dui.' },
-        { pid: 3, title: 'abs', authors: ['aditya', 'mukul'], abstract: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id elementum mauris. Curabitur viverra quis urna sit amet molestie. Aenean imperdiet, diam at vestibulum vulputate, erat lectus semper tortor, vel rutrum risus velit nec risus. Sed a lorem porttitor, ultrices risus vitae, sollicitudin dui.' },
-        { pid: 4, title: 'abs', authors: ['aditya', 'mukul'], abstract: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id elementum mauris. Curabitur viverra quis urna sit amet molestie. Aenean imperdiet, diam at vestibulum vulputate, erat lectus semper tortor, vel rutrum risus velit nec risus. Sed a lorem porttitor, ultrices risus vitae, sollicitudin dui.' },
-        { pid: 5, title: 'abs', authors: ['aditya', 'mukul'], abstract: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id elementum mauris. Curabitur viverra quis urna sit amet molestie. Aenean imperdiet, diam at vestibulum vulputate, erat lectus semper tortor, vel rutrum risus velit nec risus. Sed a lorem porttitor, ultrices risus vitae, sollicitudin dui.' },
-        { pid: 6, title: 'abs', authors: ['aditya', 'mukul'], abstract: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id elementum mauris. Curabitur viverra quis urna sit amet molestie. Aenean imperdiet, diam at vestibulum vulputate, erat lectus semper tortor, vel rutrum risus velit nec risus. Sed a lorem porttitor, ultrices risus vitae, sollicitudin dui.' },
-        { pid: 7, title: 'abs', authors: ['aditya', 'mukul'], abstract: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id elementum mauris. Curabitur viverra quis urna sit amet molestie. Aenean imperdiet, diam at vestibulum vulputate, erat lectus semper tortor, vel rutrum risus velit nec risus. Sed a lorem porttitor, ultrices risus vitae, sollicitudin dui.' },
-        { pid: 8, title: 'abs', authors: ['aditya', 'mukul'], abstract: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id elementum mauris. Curabitur viverra quis urna sit amet molestie. Aenean imperdiet, diam at vestibulum vulputate, erat lectus semper tortor, vel rutrum risus velit nec risus. Sed a lorem porttitor, ultrices risus vitae, sollicitudin dui.' }
+        { pid: 1, title: 'Reconciling Embodied and Distributional Accounts of Meaning in Language', authors: ['Mark Andrews', 'Stefan Frank', 'Gabriella Vigliocco'], tags: ['Psychology', 'Cognitive psychology', 'Epistemology', 'Computer Science', 'Artificial intelligence', 'Mathematics', 'Linguistics', 'Sociology', 'Social psychology', 'Anthropology', 'Cognitive science'] },
+        { pid: 2, title: 'Reconciling Embodied and Distributional Accounts of Meaning in Language', authors: ['Mark Andrews', 'Stefan Frank', 'Gabriella Vigliocco'], tags: ['Psychology', 'Cognitive psychology', 'Epistemology', 'Computer Science', 'Artificial intelligence', 'Mathematics', 'Linguistics', 'Sociology', 'Social psychology', 'Anthropology', 'Cognitive science'] },
+        { pid: 3, title: 'Reconciling Embodied and Distributional Accounts of Meaning in Language', authors: ['Mark Andrews', 'Stefan Frank', 'Gabriella Vigliocco'], tags: ['Psychology', 'Cognitive psychology', 'Epistemology', 'Computer Science', 'Artificial intelligence', 'Mathematics', 'Linguistics', 'Sociology', 'Social psychology', 'Anthropology', 'Cognitive science'] },
+        { pid: 4, title: 'Reconciling Embodied and Distributional Accounts of Meaning in Language', authors: ['Mark Andrews', 'Stefan Frank', 'Gabriella Vigliocco'], tags: ['Psychology', 'Cognitive psychology', 'Epistemology', 'Computer Science', 'Artificial intelligence', 'Mathematics', 'Linguistics', 'Sociology', 'Social psychology', 'Anthropology', 'Cognitive science'] },
+        { pid: 5, title: 'Reconciling Embodied and Distributional Accounts of Meaning in Language', authors: ['Mark Andrews', 'Stefan Frank', 'Gabriella Vigliocco'], tags: ['Psychology', 'Cognitive psychology', 'Epistemology', 'Computer Science', 'Artificial intelligence', 'Mathematics', 'Linguistics', 'Sociology', 'Social psychology', 'Anthropology', 'Cognitive science'] },
+        { pid: 6, title: 'Reconciling Embodied and Distributional Accounts of Meaning in Language', authors: ['Mark Andrews', 'Stefan Frank', 'Gabriella Vigliocco'], tags: ['Psychology', 'Cognitive psychology', 'Epistemology', 'Computer Science', 'Artificial intelligence', 'Mathematics', 'Linguistics', 'Sociology', 'Social psychology', 'Anthropology', 'Cognitive science'] }
       ],
       topics: [
         { name: 'Education', id: 1 },
@@ -135,10 +136,10 @@ export default {
 
 <style scoped>
   .paper-browse {
-    min-width:149px;
-    height:210px;
+    min-width:173px;
+    height:245px;
     box-shadow:0 3px 10px rgba(0,0,0,0.2);
-    margin:10px;
+    margin:12px;
     cursor:pointer;
     position: relative;
     transition: min-width 0.2s;
@@ -152,7 +153,7 @@ export default {
     display: none;
   }
   .paper-browse:hover{
-    min-width:160px;
+    min-width:190px;
   }
   .paper-browse:hover > .paper-arrow{
     display: block;
@@ -160,7 +161,7 @@ export default {
   .paper-details{
     background: white;
     box-shadow:0 3px 10px rgba(0,0,0,0.2);
-    height:220px;
+    height:265px;
     margin:10px;
     margin-bottom:0px;
   }
