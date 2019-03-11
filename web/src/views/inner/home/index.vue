@@ -17,8 +17,9 @@
                   </v-flex>
                   <v-flex md10 style="display:flex;overflow-x:auto;position:relative" v-if="!paperView">
                     <div v-for="(paper,i) in papers" :key="i" class="paper-browse">
+                      <img src="https://i1.rgstatic.net/publication/2255973_Access_and_Retrieval_from_Image_Databases_Using_Image_Thumbnails/links/5498b60f0cf2eeefc30f9c6e/largepreview.png" alt="" style="height:100%">
                       <div class="paper-arrow">
-                        <v-btn icon @click="paperDetails(paper)">
+                        <v-btn color="grey lighten-1" icon @click="paperDetails(paper)">
                           <v-icon>chevron_right</v-icon>
                         </v-btn>
                       </div>
@@ -27,11 +28,11 @@
                   <v-flex md10 v-else>
                     <div class="paper-details text-xs-left" v-if="paperView">
                       <v-layout row wrap fill-height>
-                        <v-flex md2 style="position:relative;border:1px inset rgba(0,0,0,0.2)">
-                          <v-btn style="position:absolute;top:0;left:0" @click="paperView=false" icon>
+                        <v-flex md2 style="position:relative;border:1px inset rgba(0,0,0,0.2);">
+                          <v-btn color="grey lighten-1" style="position:absolute;top:0;left:0" @click="paperView=false" icon>
                             <v-icon>chevron_left</v-icon>
                           </v-btn>
-
+                          <img src="https://i1.rgstatic.net/publication/2255973_Access_and_Retrieval_from_Image_Databases_Using_Image_Thumbnails/links/5498b60f0cf2eeefc30f9c6e/largepreview.png" alt="" style="width:100%">
                         </v-flex>
                         <v-flex md10 pa-3 class="grey lighten-2">
                           <v-layout column>
@@ -134,8 +135,8 @@ export default {
 
 <style scoped>
   .paper-browse {
-    min-width:124px;
-    height:175px;
+    min-width:149px;
+    height:210px;
     box-shadow:0 3px 10px rgba(0,0,0,0.2);
     margin:10px;
     cursor:pointer;
@@ -151,7 +152,7 @@ export default {
     display: none;
   }
   .paper-browse:hover{
-    min-width:140px;
+    min-width:160px;
   }
   .paper-browse:hover > .paper-arrow{
     display: block;
@@ -159,7 +160,7 @@ export default {
   .paper-details{
     background: white;
     box-shadow:0 3px 10px rgba(0,0,0,0.2);
-    height:200px;
+    height:220px;
     margin:10px;
     margin-bottom:0px;
   }
