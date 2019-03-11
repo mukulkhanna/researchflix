@@ -26,7 +26,7 @@
                   <v-flex md1 class="red">
                     left
                   </v-flex>
-                  <v-flex md10 class="purple" style="display:flex;overflow-x:hidden;">
+                  <v-flex md10 class="purple" style="display:flex;overflow-x:auto;">
                     <div v-for="(paper,i) in papers" :key="i" style="min-width:124px;height:175px;background:black; margin:10px">
 
                     </div>
