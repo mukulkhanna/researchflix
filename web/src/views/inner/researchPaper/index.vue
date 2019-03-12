@@ -99,11 +99,11 @@
                   <v-flex mt-4 text-xs-center>
                     <v-layout row wrap align-center justify-center>
                       <v-flex md1>
-                        <v-btn icon large>
+                        <v-btn icon large @click="leftScroll">
                           <v-icon x-large>arrow_left</v-icon>
                         </v-btn>
                       </v-flex>
-                      <v-flex md10 style="display:flex;overflow-x:auto;position:relative;">
+                      <v-flex md10 id="paperScroller" style="display:flex;overflow-x:auto;position:relative;">
                         <div v-for="(paper,i) in relatedPapers" :key="i" class="paper-browse">
                           <img src="https://i1.rgstatic.net/publication/2255973_Access_and_Retrieval_from_Image_Databases_Using_Image_Thumbnails/links/5498b60f0cf2eeefc30f9c6e/largepreview.png" alt="" style="height:100%">
                           <router-link :to="{path:'/paper/'+paper.pid}" tag="div" class="paper-details">
@@ -112,7 +112,7 @@
                         </div>
                       </v-flex>
                       <v-flex md1>
-                        <v-btn icon large>
+                        <v-btn icon large @click="rightScroll">
                           <v-icon x-large>arrow_right</v-icon>
                         </v-btn>
                       </v-flex>
@@ -155,6 +155,16 @@ export default {
         { pid: 5, title: 'Reconfigurable Intermediate Resonant Circuit Based WPT System' },
         { pid: 6, title: 'Reconfigurable Intermediate Resonant Circuit Based WPT System' }
       ]
+    }
+  },
+  methods: {
+    leftScroll () {
+      var container = this.$el.querySelector("#paperScroller")
+      container.scrollLeft = container.scrollLeft - 200
+    },
+    rightScroll () {
+      var container = this.$el.querySelector("#paperScroller")
+      container.scrollLeft = container.scrollLeft + 200
     }
   }
 }

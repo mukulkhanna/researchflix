@@ -10,7 +10,7 @@ export default [
     component: home
   },
   {
-    path: '/profile',
+    path: '/profile/:uid',
     name: 'profile',
     component: profile
   },

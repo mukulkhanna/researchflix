@@ -11,11 +11,11 @@
               <v-flex mt-4 text-xs-center>
                 <v-layout row wrap align-center justify-center>
                   <v-flex md1>
-                    <v-btn icon large v-if="!paperView">
+                    <v-btn icon large v-if="!paperView" @click="leftScroll">
                       <v-icon x-large>arrow_left</v-icon>
                     </v-btn>
                   </v-flex>
-                  <v-flex md10 style="display:flex;overflow-x:auto;position:relative;" v-if="!paperView">
+                  <v-flex id="paperScroller" md10 style="display:flex;overflow-x:auto;position:relative;overflow-y:hidden" v-if="!paperView">
                     <div v-for="(paper,i) in papers" :key="i" class="paper-browse">
                       <img src="https://i1.rgstatic.net/publication/2255973_Access_and_Retrieval_from_Image_Databases_Using_Image_Thumbnails/links/5498b60f0cf2eeefc30f9c6e/largepreview.png" alt="" style="height:100%">
                       <div class="paper-arrow">
@@ -35,28 +35,38 @@
                           <img src="https://i1.rgstatic.net/publication/2255973_Access_and_Retrieval_from_Image_Databases_Using_Image_Thumbnails/links/5498b60f0cf2eeefc30f9c6e/largepreview.png" alt="" style="width:100%">
                         </v-flex>
                         <v-flex md9 pa-3 class="grey lighten-2">
-                          <v-layout column>
-                            <v-flex>
-                              <v-layout row wrap align-center>
-                                <v-flex md10 class="font-weight-bold">
+                          <v-layout row wrap>
+                            <v-flex md8>
+                              <v-layout column>
+                                <v-flex class="font-weight-bold">
                                   {{selectedPaper.title}}
                                 </v-flex>
-                                <v-flex md2 text-xs-right>
-                                  <v-btn :to="{path:'/paper/'+selectedPaper.pid}" flat style="background:#00303F;border-radius:10px" dark>open</v-btn>
+                                <v-flex mt-2 pt-1>
+                                  <span class="font-weight-bold">Author(s):</span>
+                                  <span v-for="(author,j) in selectedPaper.authors" :key="j">
+                                    {{author}}<span v-if="j<selectedPaper.authors.length-1">, </span>
+                                  </span>
+                                </v-flex>
+                                <v-flex mt-2 pt-1>
+                                  <span class="font-weight-bold">Tag(s):</span>
+                                  <span v-for="(tag,j) in selectedPaper.tags" :key="j">
+                                    {{tag}}<span v-if="j<selectedPaper.tags.length-1">, </span>
+                                  </span>
                                 </v-flex>
                               </v-layout>
                             </v-flex>
-                            <v-flex mt-2 pt-1>
-                              <span class="font-weight-bold">Author(s):</span>
-                              <span v-for="(author,j) in selectedPaper.authors" :key="j">
-                                {{author}}<span v-if="j<selectedPaper.authors.length-1">, </span>
-                              </span>
-                            </v-flex>
-                            <v-flex mt-2 pt-1>
-                              <span class="font-weight-bold">Tag(s):</span>
-                              <span v-for="(tag,j) in selectedPaper.tags" :key="j">
-                                {{tag}}<span v-if="j<selectedPaper.tags.length-1">, </span>
-                              </span>
+                            <v-flex md4 ma-0>
+                              <v-layout column>
+                                <v-flex>
+                                  <v-btn block :to="{path:'/paper/'+selectedPaper.pid}" flat style="background:#00303F;border-radius:10px;font-size:0.9em" dark>open</v-btn>
+                                </v-flex>
+                                <v-flex>
+                                  <v-btn block :to="{path:'/paper/'+selectedPaper.pid}" flat style="background:#00303F;border-radius:10px;font-size:0.9em" dark>add to collection</v-btn>
+                                </v-flex>
+                                <v-flex>
+                                  <v-btn block :to="{path:'/paper/'+selectedPaper.pid}" flat style="background:#00303F;border-radius:10px;font-size:0.9em" dark>bookmark</v-btn>
+                                </v-flex>
+                              </v-layout>
                             </v-flex>
                           </v-layout>
                         </v-flex>
@@ -64,7 +74,7 @@
                     </div>
                   </v-flex>
                   <v-flex md1>
-                    <v-btn icon large v-if="!paperView">
+                    <v-btn icon large v-if="!paperView" @click="rightScroll">
                       <v-icon x-large>arrow_right</v-icon>
                     </v-btn>
                   </v-flex>
@@ -129,6 +139,14 @@ export default {
     paperDetails (paper) {
       this.selectedPaper = paper
       this.paperView = true
+    },
+    leftScroll () {
+      var container = this.$el.querySelector("#paperScroller")
+      container.scrollLeft = container.scrollLeft - 200
+    },
+    rightScroll () {
+      var container = this.$el.querySelector("#paperScroller")
+      container.scrollLeft = container.scrollLeft + 200
     }
   }
 }
