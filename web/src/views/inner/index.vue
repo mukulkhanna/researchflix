@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <div>
-      <v-toolbar flat app class="white">
+      <v-toolbar :dense="!pageScrolled" :flat="pageScrolled" app class="white">
         <v-toolbar-side-icon class="hidden-sm-and-up"></v-toolbar-side-icon>
         <v-toolbar-title>
           <router-link :to="{ path: '/'}"  style="color:#dcae1d;text-decoration:none">
@@ -30,7 +30,28 @@
 <script>
 // @ is an alias to /src
 export default {
-  name: 'inner'
+  name: 'inner',
+  data () {
+    return {
+      pageScrolled: true
+    }
+  },
+  methods: {
+    handleScroll (event) {
+      let scrollTop = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop
+      if (scrollTop < 48) {
+        this.pageScrolled = true
+      } else {
+        this.pageScrolled = false
+      }
+    }
+  },
+  created () {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  destroyed () {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
 }
 </script>
 
