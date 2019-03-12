@@ -3,7 +3,11 @@
     <div>
       <v-toolbar flat app class="white">
         <v-toolbar-side-icon class="hidden-sm-and-up"></v-toolbar-side-icon>
-        <v-toolbar-title style="color:#dcae1d">Researchflix</v-toolbar-title>
+        <v-toolbar-title>
+          <router-link :to="{ path: '/'}"  style="color:#dcae1d;text-decoration:none">
+            Researchflix
+          </router-link>
+        </v-toolbar-title>
         <v-layout row px-5 class="hidden-xs-only">
           <v-flex class="text-wrapper">
             <v-text-field color="grey darken-2" flat clearable placeholder="Search" solo append-icon="search"></v-text-field>

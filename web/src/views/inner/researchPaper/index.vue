@@ -107,7 +107,7 @@
                         <div v-for="(paper,i) in relatedPapers" :key="i" class="paper-browse">
                           <img src="https://i1.rgstatic.net/publication/2255973_Access_and_Retrieval_from_Image_Databases_Using_Image_Thumbnails/links/5498b60f0cf2eeefc30f9c6e/largepreview.png" alt="" style="height:100%">
                           <router-link :to="{path:'/paper/'+paper.pid}" tag="div" class="paper-details">
-                            {{paper.title}}
+                            <p>{{paper.title}}</p>
                           </router-link>
                         </div>
                       </v-flex>
@@ -180,8 +180,15 @@ export default {
     width:100%;
     background:rgba(0,0,0,0.65);
     transition:0.2s;
-    padding-top:10px;
     color:rgba(255,255,255,0.9);
+    padding:0 10px;
+    word-wrap: break-word;
+  }
+  .paper-details p{
+    position: relative;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
   }
   .paper-browse:hover > .paper-details{
     top:0;
