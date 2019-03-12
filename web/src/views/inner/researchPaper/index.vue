@@ -148,12 +148,12 @@ export default {
         doi: '10.1109/JIOT.2014.2306328'
       },
       relatedPapers: [
-        {pid: 1, title: 'Reconfigurable Intermediate Resonant Circuit Based WPT System'},
-        {pid: 2, title: 'Reconfigurable Intermediate Resonant Circuit Based WPT System'},
-        {pid: 3, title: 'Reconfigurable Intermediate Resonant Circuit Based WPT System'},
-        {pid: 4, title: 'Reconfigurable Intermediate Resonant Circuit Based WPT System'},
-        {pid: 5, title: 'Reconfigurable Intermediate Resonant Circuit Based WPT System'},
-        {pid: 6, title: 'Reconfigurable Intermediate Resonant Circuit Based WPT System'},
+        { pid: 1, title: 'Reconfigurable Intermediate Resonant Circuit Based WPT System' },
+        { pid: 2, title: 'Reconfigurable Intermediate Resonant Circuit Based WPT System' },
+        { pid: 3, title: 'Reconfigurable Intermediate Resonant Circuit Based WPT System' },
+        { pid: 4, title: 'Reconfigurable Intermediate Resonant Circuit Based WPT System' },
+        { pid: 5, title: 'Reconfigurable Intermediate Resonant Circuit Based WPT System' },
+        { pid: 6, title: 'Reconfigurable Intermediate Resonant Circuit Based WPT System' }
       ]
     }
   }
