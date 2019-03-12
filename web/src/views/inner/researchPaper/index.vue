@@ -159,11 +159,11 @@ export default {
   },
   methods: {
     leftScroll () {
-      var container = this.$el.querySelector("#paperScroller")
+      var container = this.$el.querySelector('#paperScroller')
       container.scrollLeft = container.scrollLeft - 200
     },
     rightScroll () {
-      var container = this.$el.querySelector("#paperScroller")
+      var container = this.$el.querySelector('#paperScroller')
       container.scrollLeft = container.scrollLeft + 200
     }
   }

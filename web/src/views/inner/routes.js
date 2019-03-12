@@ -1,6 +1,7 @@
 var home = () => import('./home/')
 var profile = () => import('./profile/')
 var bookmarks = () => import('./bookmarks/')
+var collections = () => import('./collections/')
 var researchPaper = () => import('./researchPaper/')
 
 export default [
@@ -18,6 +19,11 @@ export default [
     path: '/bookmarks',
     name: 'bookmarks',
     component: bookmarks
+  },
+  {
+    path: '/collections',
+    name: 'collections',
+    component: collections
   },
   {
     path: '/paper/:pid',

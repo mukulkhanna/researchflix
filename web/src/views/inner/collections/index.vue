@@ -2,7 +2,7 @@
   <v-app>
     <v-content class="white">
       <v-container>
-        bookmarks
+        collections
       </v-container>
     </v-content>
   </v-app>
@@ -11,6 +11,6 @@
 <script>
 // @ is an alias to /src
 export default {
-  name: 'bookmarks'
+  name: 'collections'
 }
 </script>
