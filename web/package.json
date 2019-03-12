@@ -6,10 +6,9 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit",
-    "precommit-msg": "echo 'Linting for you'"
-  },
-  "pre-commit": [ "precommit-msg", "lint" ],
+    "test:unit": "vue-cli-service test:unit"
+    },
+  "pre-commit": [ "lint" ],
   "dependencies": {
     "@babel/polyfill": "^7.0.0-rc.1",
     "material-design-icons-iconfont": "^4.0.5",
