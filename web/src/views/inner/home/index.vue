@@ -5,7 +5,7 @@
         <v-layout column text-xs-left>
           <v-flex my-5>
             <v-layout column>
-              <v-flex pl-4 class="title" style="color:#00303F">
+              <v-flex pl-4 class="title">
                 Browse
               </v-flex>
               <v-flex mt-4 text-xs-center>
@@ -88,7 +88,7 @@
           </v-flex>
           <v-flex my-5>
             <v-layout column>
-              <v-flex pl-4 class="subheading" style="color:#00303F">
+              <v-flex pl-4 class="subheading">
                 Or choose a topic of interest
               </v-flex>
               <v-flex mt-4 px-3>

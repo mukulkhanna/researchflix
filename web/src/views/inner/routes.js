@@ -17,12 +17,12 @@ export default [
     component: profile
   },
   {
-    path: '/bookmarks',
+    path: '/bookmarks/:pid',
     name: 'bookmarks',
     component: bookmarks
   },
   {
-    path: '/collections',
+    path: '/collections/:pid',
     name: 'collections',
     component: collections
   },

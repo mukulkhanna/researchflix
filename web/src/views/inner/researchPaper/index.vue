@@ -14,13 +14,13 @@
                       </v-flex>
                       <v-flex mt-4>
                         <v-layout row wrap>
-                          <v-flex md9>
+                          <v-flex md9 xs12>
                             <span class="font-weight-bold">Author(s):</span><br>
                             <span v-for="(author,j) in paper.authors" :key="j">
                               {{author}}<span v-if="j<paper.authors.length-1">, </span>
                             </span>
                           </v-flex>
-                          <v-flex md3 pl-4>
+                          <v-flex xs12 md3 :class="{'pl-0 mt-3': $vuetify.breakpoint.smAndDown, 'pl-4': $vuetify.breakpoint.mdAndUp}">
                             <v-layout text-xs-center py-2 column style="background:rgba(220,174,29,0.2);color:#dcae1d;border-radius:5px">
                               <v-flex style="font-size:1.3em">
                                 {{paper.views}}
@@ -40,9 +40,9 @@
                       </v-flex>
                     </v-layout>
                   </v-flex>
-                  <v-flex md4>
+                  <v-flex md4 :class="{'mt-4': $vuetify.breakpoint.smAndDown}">
                     <v-layout justify-end row wrap>
-                      <v-flex md9>
+                      <v-flex md9 style="word-wrap:break-word">
                         <v-layout py-3 px-4 column style="border:1px solid rgba(0,0,0,0.2);border-radius:5px;">
                           <v-flex>
                             <span class="font-weight-bold">Published In: </span>
@@ -97,7 +97,7 @@
                     Related
                   </v-flex>
                   <v-flex mt-4 text-xs-center>
-                    <v-layout row wrap align-center justify-center>
+                    <v-layout row align-center justify-center>
                       <v-flex md1>
                         <v-btn icon large @click="leftScroll">
                           <v-icon x-large>arrow_left</v-icon>
