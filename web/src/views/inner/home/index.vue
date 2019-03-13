@@ -165,7 +165,8 @@ export default {
     cursor:pointer;
     position: relative;
     transition: min-width 0.2s;
-    border:1px inset rgba(0,0,0,0.2)
+    border:1px inset rgba(0,0,0,0.2);
+    background:white
   }
   .paper-arrow{
     position: absolute;
