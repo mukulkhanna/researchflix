@@ -12,7 +12,7 @@
                 <v-layout row wrap align-center>
                   <v-flex md3 v-for="(paper,i) in papers" :key="i" px-3 py-4>
                     <v-layout column class="paper-browse">
-                      <v-flex class="font-weight-bold" px-3 pt-3 pb-1>
+                      <v-flex class="font-weight-bold" px-3 pt-3 pb-1 style="font-size:1.1em">
                         {{paper.title}}
                       </v-flex>
                       <v-flex px-3 pb-1>
@@ -83,13 +83,13 @@ export default {
         name: 'Education'
       },
       papers: [
-        { pid: 1, title: 'Reconciling Embodied and Distributional Accounts of Meaning in Language', authors: ['Mark Andrews', 'Stefan Frank', 'Gabriella Vigliocco'], authors: ['Mark Andrews', 'Stefan Frank', 'Gabriella Vigliocco'],publisher: 'IEEE', pages: 15, dop: '2014', tags: ['Psychology', 'Cognitive psychology', 'Epistemology', 'Computer Science'] },
-        { pid: 2, title: 'Reconciling Embodied and Distributional Accounts of Meaning in Language', authors: ['Mark Andrews', 'Stefan Frank', 'Gabriella Vigliocco'], authors: ['Mark Andrews', 'Stefan Frank', 'Gabriella Vigliocco'],publisher: 'IEEE', pages: 15, dop: '2014', tags: ['Psychology', 'Cognitive psychology', 'Epistemology', 'Computer Science'] },
-        { pid: 3, title: 'Reconciling Embodied and Distributional Accounts of Meaning in Language', authors: ['Mark Andrews', 'Stefan Frank', 'Gabriella Vigliocco'], authors: ['Mark Andrews', 'Stefan Frank', 'Gabriella Vigliocco'],publisher: 'IEEE', pages: 15, dop: '2014', tags: ['Psychology', 'Cognitive psychology', 'Epistemology', 'Computer Science'] },
-        { pid: 4, title: 'Reconciling Embodied and Distributional Accounts of Meaning in Language', authors: ['Mark Andrews', 'Stefan Frank', 'Gabriella Vigliocco'], authors: ['Mark Andrews', 'Stefan Frank', 'Gabriella Vigliocco'],publisher: 'IEEE', pages: 15, dop: '2014', tags: ['Psychology', 'Cognitive psychology', 'Epistemology', 'Computer Science'] },
-        { pid: 5, title: 'Reconciling Embodied and Distributional Accounts of Meaning in Language', authors: ['Mark Andrews', 'Stefan Frank', 'Gabriella Vigliocco'], authors: ['Mark Andrews', 'Stefan Frank', 'Gabriella Vigliocco'],publisher: 'IEEE', pages: 15, dop: '2014', tags: ['Psychology', 'Cognitive psychology', 'Epistemology', 'Computer Science'] },
-        { pid: 6, title: 'Reconciling Embodied and Distributional Accounts of Meaning in Language', authors: ['Mark Andrews', 'Stefan Frank', 'Gabriella Vigliocco'], authors: ['Mark Andrews', 'Stefan Frank', 'Gabriella Vigliocco'],publisher: 'IEEE', pages: 15, dop: '2014', tags: ['Psychology', 'Cognitive psychology', 'Epistemology', 'Computer Science'] },
-        { pid: 7, title: 'Reconciling Embodied and Distributional Accounts of Meaning in Language', authors: ['Mark Andrews', 'Stefan Frank', 'Gabriella Vigliocco'], authors: ['Mark Andrews', 'Stefan Frank', 'Gabriella Vigliocco'],publisher: 'IEEE', pages: 15, dop: '2014', tags: ['Psychology', 'Cognitive psychology', 'Epistemology', 'Computer Science'] }
+        { pid: 1, title: 'Reconciling Embodied and Distributional Accounts of Meaning in Language', authors: ['Mark Andrews', 'Stefan Frank', 'Gabriella Vigliocco'], publisher: 'IEEE', pages: 15, dop: '2014', tags: ['Psychology', 'Cognitive psychology', 'Epistemology', 'Computer Science'] },
+        { pid: 2, title: 'Reconciling Embodied and Distributional Accounts of Meaning in Language', authors: ['Mark Andrews', 'Stefan Frank', 'Gabriella Vigliocco'], publisher: 'IEEE', pages: 15, dop: '2014', tags: ['Psychology', 'Cognitive psychology', 'Epistemology', 'Computer Science'] },
+        { pid: 3, title: 'Reconciling Embodied and Distributional Accounts of Meaning in Language', authors: ['Mark Andrews', 'Stefan Frank', 'Gabriella Vigliocco'], publisher: 'IEEE', pages: 15, dop: '2014', tags: ['Psychology', 'Cognitive psychology', 'Epistemology', 'Computer Science'] },
+        { pid: 4, title: 'Reconciling Embodied and Distributional Accounts of Meaning in Language', authors: ['Mark Andrews', 'Stefan Frank', 'Gabriella Vigliocco'], publisher: 'IEEE', pages: 15, dop: '2014', tags: ['Psychology', 'Cognitive psychology', 'Epistemology', 'Computer Science'] },
+        { pid: 5, title: 'Reconciling Embodied and Distributional Accounts of Meaning in Language', authors: ['Mark Andrews', 'Stefan Frank', 'Gabriella Vigliocco'], publisher: 'IEEE', pages: 15, dop: '2014', tags: ['Psychology', 'Cognitive psychology', 'Epistemology', 'Computer Science'] },
+        { pid: 6, title: 'Reconciling Embodied and Distributional Accounts of Meaning in Language', authors: ['Mark Andrews', 'Stefan Frank', 'Gabriella Vigliocco'], publisher: 'IEEE', pages: 15, dop: '2014', tags: ['Psychology', 'Cognitive psychology', 'Epistemology', 'Computer Science'] },
+        { pid: 7, title: 'Reconciling Embodied and Distributional Accounts of Meaning in Language', authors: ['Mark Andrews', 'Stefan Frank', 'Gabriella Vigliocco'], publisher: 'IEEE', pages: 15, dop: '2014', tags: ['Psychology', 'Cognitive psychology', 'Epistemology', 'Computer Science'] }
       ]
     }
   }

@@ -20,9 +20,24 @@
                       <div v-for="(paper,i) in papers" :key="i" class="paper-browse">
                         <img src="https://i1.rgstatic.net/publication/2255973_Access_and_Retrieval_from_Image_Databases_Using_Image_Thumbnails/links/5498b60f0cf2eeefc30f9c6e/largepreview.png" alt="" style="height:100%">
                         <div class="paper-arrow">
-                          <v-btn color="grey lighten-1" icon @click="paperDetails(paper)">
-                            <v-icon>chevron_right</v-icon>
-                          </v-btn>
+                          <v-layout column>
+                            <v-flex>
+                              <v-tooltip bottom>
+                                <v-btn slot="activator" color="grey lighten-1" icon @click="paperDetails(paper)">
+                                  <v-icon>chevron_right</v-icon>
+                                </v-btn>
+                                <span>Preview</span>
+                              </v-tooltip>
+                            </v-flex>
+                            <v-flex>
+                              <v-tooltip bottom>
+                                <v-btn slot="activator" color="grey lighten-1" icon :to="{path:'/paper/'+paper.pid}">
+                                  <v-icon small>open_in_new</v-icon>
+                                </v-btn>
+                                <span>Open</span>
+                              </v-tooltip>
+                            </v-flex>
+                          </v-layout>
                         </div>
                       </div>
                     </v-flex>
@@ -31,7 +46,7 @@
                     <v-flex v-if="paperView" md9>
                       <div class="paper-details text-xs-left" v-if="paperView">
                         <v-layout row wrap fill-height>
-                          <v-flex md3 style="position:relative;border:1px inset rgba(0,0,0,0.2);">
+                          <v-flex md3 style="position:relative;">
                             <v-btn color="grey lighten-1" style="position:absolute;top:0;left:0" @click="paperView=false" icon>
                               <v-icon>chevron_left</v-icon>
                             </v-btn>
@@ -64,10 +79,16 @@
                                     <v-btn block :to="{path:'/paper/'+selectedPaper.pid}" flat style="background:#00303F;border-radius:10px;font-size:0.9em" dark>open</v-btn>
                                   </v-flex>
                                   <v-flex>
-                                    <v-btn block :to="{path:'/paper/'+selectedPaper.pid}" flat style="background:#00303F;border-radius:10px;font-size:0.9em" dark>add to collection</v-btn>
+                                    <v-btn block :to="{path:'/paper/'+selectedPaper.pid}" flat style="background:#00303F;border-radius:10px;font-size:0.9em" dark>
+                                      <v-icon class="pr-1" small>note_add</v-icon>
+                                      add to collection
+                                    </v-btn>
                                   </v-flex>
                                   <v-flex>
-                                    <v-btn block :to="{path:'/paper/'+selectedPaper.pid}" flat style="background:#00303F;border-radius:10px;font-size:0.9em" dark>bookmark</v-btn>
+                                    <v-btn block :to="{path:'/paper/'+selectedPaper.pid}" flat style="background:#00303F;border-radius:10px;font-size:0.9em" dark>
+                                      <v-icon small class="pr-2">bookmarks</v-icon>
+                                      bookmark
+                                    </v-btn>
                                   </v-flex>
                                 </v-layout>
                               </v-flex>
@@ -183,10 +204,10 @@ export default {
   }
   .paper-details{
     background: white;
-    box-shadow:0 3px 10px rgba(0,0,0,0.2);
-    height:265px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
     margin:10px;
     margin-bottom:0px;
+    border:1px inset rgba(0,0,0,0.2);
   }
   .slide-enter-active,
   .slide-leave-active {
