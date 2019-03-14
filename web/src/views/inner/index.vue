@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <div>
-      <v-toolbar :dense="!pageScrolled" :flat="pageScrolled" app class="white">
+      <v-toolbar :dense="!pageScrolled" :flat="pageScrolled" app class="white" style="z-index:1000">
         <v-toolbar-side-icon class="hidden-sm-and-up"></v-toolbar-side-icon>
         <v-toolbar-title>
           <router-link :to="{ path: '/'}"  style="color:#dcae1d;text-decoration:none">
@@ -14,8 +14,34 @@
           </v-flex>
         </v-layout>
         <v-spacer></v-spacer>
-        <v-toolbar-items class="hidden-xs-only btn-wrapper">
+        <!-- <v-toolbar-items class="hidden-xs-only btn-wrapper">
           <v-btn :to="{path:'/login'}" flat style="background:#00303F" dark>SIGN IN</v-btn>
+        </v-toolbar-items> -->
+        <v-toolbar-items>
+          <v-btn exact-active-class="active" :ripple="false" exact flat :to="{path:'/'}" style="text-transform:none;position:relative">
+            <span class="my-2 mx-3">Home</span>
+            <span class="line-1"></span>
+            <span class="line-2"></span>
+            <span class="line-3"></span>
+            <span class="line-4"></span>
+          </v-btn>
+          <v-btn exact-active-class="active" :ripple="false" exact flat :to="{path:'/collections/1'}" style="text-transform:none;position:relative">
+            <span class="my-2 mx-3">Collections</span>
+            <span class="line-1"></span>
+            <span class="line-2"></span>
+            <span class="line-3"></span>
+            <span class="line-4"></span>
+          </v-btn>
+          <v-btn exact-active-class="active" :ripple="false" exact flat :to="{path:'/bookmarks/1'}" style="text-transform:none;position:relative">
+            <span class="my-2 mx-3">Bookmarks</span>
+            <span class="line-1"></span>
+            <span class="line-2"></span>
+            <span class="line-3"></span>
+            <span class="line-4"></span>
+          </v-btn>
+          <v-btn exact-active-class="active" :ripple="false" exact flat :to="{path:'/login'}" style="text-transform:none;position:relative">
+            Sign In
+          </v-btn>
         </v-toolbar-items>
       </v-toolbar>
       <router-view/>
@@ -68,5 +94,55 @@ export default {
   }
   .text-wrapper >>> .v-text-field.v-text-field--solo .v-input__control{
     min-height:0px!important
+  }
+  .v-btn::before{
+    background:transparent;
+  }
+  .line-1,
+  .line-2,
+  .line-3,
+  .line-4{
+    position: absolute;
+    background: red;
+    transition:0.4s
+  }
+  .line-1{
+    top:0;
+    left:0;
+    height:2px;
+    width:0;
+  }
+  .line-2{
+    top:0;
+    right:0;
+    height:0;
+    width:2px;
+  }
+  .line-3{
+    bottom:0;
+    left:0;
+    width:0;
+    height:2px;
+  }
+  .line-4{
+    top:0;
+    left:0;
+    height:0;
+    width:2px;
+  }
+  .v-btn--active{
+    /* display:block; */
+  }
+  .active .line-1{
+    width:100%
+  }
+  .active .line-2{
+    height:100%
+  }
+  .active .line-3{
+    width:100%
+  }
+  .active .line-4{
+    height:100%
   }
 </style>
