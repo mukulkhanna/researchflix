@@ -8,7 +8,7 @@
             Researchflix
           </router-link>
         </v-toolbar-title>
-        <v-layout row px-5 class="hidden-xs-only">
+        <v-layout row pl-5 class="hidden-xs-only">
           <v-flex class="text-wrapper">
             <v-text-field color="grey darken-2" flat clearable placeholder="Search" solo append-icon="search"></v-text-field>
           </v-flex>
@@ -18,28 +18,28 @@
           <v-btn :to="{path:'/login'}" flat style="background:#00303F" dark>SIGN IN</v-btn>
         </v-toolbar-items> -->
         <v-toolbar-items>
-          <v-btn exact-active-class="active" :ripple="false" exact flat :to="{path:'/'}" style="text-transform:none;position:relative">
+          <v-btn exact-active-class="active" class="font-weight-bold" :ripple="false" exact flat :to="{path:'/'}" style="text-transform:none;position:relative;color:rgba(0,0,0,0.6);">
             <span class="my-2 mx-3">Home</span>
             <span class="line-1"></span>
             <span class="line-2"></span>
             <span class="line-3"></span>
             <span class="line-4"></span>
           </v-btn>
-          <v-btn exact-active-class="active" :ripple="false" exact flat :to="{path:'/collections/1'}" style="text-transform:none;position:relative">
+          <v-btn exact-active-class="active" class="font-weight-bold" :ripple="false" exact flat :to="{path:'/collections/1'}" style="text-transform:none;position:relative;color:rgba(0,0,0,0.6);">
             <span class="my-2 mx-3">Collections</span>
             <span class="line-1"></span>
             <span class="line-2"></span>
             <span class="line-3"></span>
             <span class="line-4"></span>
           </v-btn>
-          <v-btn exact-active-class="active" :ripple="false" exact flat :to="{path:'/bookmarks/1'}" style="text-transform:none;position:relative">
+          <v-btn exact-active-class="active" class="font-weight-bold" :ripple="false" exact flat :to="{path:'/bookmarks/1'}" style="text-transform:none;position:relative;color:rgba(0,0,0,0.6);">
             <span class="my-2 mx-3">Bookmarks</span>
             <span class="line-1"></span>
             <span class="line-2"></span>
             <span class="line-3"></span>
             <span class="line-4"></span>
           </v-btn>
-          <v-btn exact-active-class="active" :ripple="false" exact flat :to="{path:'/login'}" style="text-transform:none;position:relative">
+          <v-btn exact-active-class="active" class="font-weight-bold" :ripple="false" exact flat :to="{path:'/login'}" style="text-transform:none;position:relative;color:rgba(0,0,0,0.6);">
             Sign In
           </v-btn>
         </v-toolbar-items>
@@ -88,7 +88,7 @@ export default {
   }
   .text-wrapper >>> .v-input__slot{
     margin-bottom:0!important;
-    width:60%;
+    width:75%;
     border:1px solid rgba(0,0,0,0.2);
     border-radius:30px!important;
   }
@@ -103,7 +103,7 @@ export default {
   .line-3,
   .line-4{
     position: absolute;
-    background: red;
+    background: #dcae1d;
     transition:0.4s
   }
   .line-1{
@@ -120,18 +120,18 @@ export default {
   }
   .line-3{
     bottom:0;
-    left:0;
+    right:0;
     width:0;
     height:2px;
   }
   .line-4{
-    top:0;
+    bottom:0;
     left:0;
     height:0;
     width:2px;
   }
-  .v-btn--active{
-    /* display:block; */
+  .active{
+    color:#00303F!important
   }
   .active .line-1{
     width:100%
