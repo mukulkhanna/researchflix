@@ -21,24 +21,40 @@
           </v-flex>
           <v-flex md8 sm9 :class="{'pl-0': $vuetify.breakpoint.smAndDown, 'pl-5': $vuetify.breakpoint.mdAndUp}">
             <v-layout column>
-              <v-flex class="headline font-weight-bold" pt-4 pl-4 mb-4>
-                Collections
+              <v-flex class="headline font-weight-bold btn-wrapper" pt-4 pl-4 mb-4>
+                <v-btn class="ma-0 pa-0" :ripple="false" flat style="text-transform:none" @click="viewCollection=false" v-if="viewCollection">
+                  <v-icon style="border-radius:50%;padding:2px;" left>arrow_back</v-icon>
+                  Back to Collections
+                </v-btn>
+                <span v-if="!viewCollection">Collections</span>
               </v-flex>
-              <v-flex>
+              <v-flex v-if="!viewCollection">
                 <v-layout row wrap fill-height>
-                  <v-flex md3 sm4 v-for="(collection,i) in collections" :key="i" text-xs-center>
+                  <v-flex md3 sm4 v-for="(collection,i) in collections" :key="i" text-xs-center @click="viewCollection=true">
                     <div class="collection-stack">
                       <v-layout column class="collection-view">
                         <v-flex>
-                          {{collection.paperCount}} Papers<br>
-                          {{collection.name}}
                         </v-flex>
                       </v-layout>
                       <div class="collection-shadow-1"></div>
                       <div class="collection-shadow-2"></div>
+                      <div class="collection-shadow-3"></div>
+                      <div class="collection-shadow-4"></div>
                     </div>
+                    <v-layout row wrap>
+                      <v-flex>
+                        <v-layout column>
+                          <v-flex>
+                            {{collection.name}}
+                          </v-flex>
+                        </v-layout>
+                      </v-flex>
+                    </v-layout>
                   </v-flex>
                 </v-layout>
+              </v-flex>
+              <v-flex v-else>
+                <viewCollection></viewCollection>
               </v-flex>
             </v-layout>
           </v-flex>
@@ -50,8 +66,12 @@
 
 <script>
 // @ is an alias to /src
+import viewCollection from './viewCollection/'
 export default {
   name: 'collections',
+  components: {
+    viewCollection
+  },
   data () {
     return {
       user: {
@@ -66,8 +86,14 @@ export default {
         { id: 4, name: 'Moh Maya', paperCount: 5 },
         { id: 5, name: 'Techno Savvy', paperCount: 11 },
         { id: 6, name: 'Techno Savvy', paperCount: 4 },
+        { id: 7, name: 'Techno Savvy', paperCount: 1 },
+        { id: 7, name: 'Techno Savvy', paperCount: 1 },
+        { id: 7, name: 'Techno Savvy', paperCount: 1 },
+        { id: 7, name: 'Techno Savvy', paperCount: 1 },
         { id: 7, name: 'Techno Savvy', paperCount: 1 }
-      ]
+
+      ],
+      viewCollection: false
     }
   }
 }
@@ -80,46 +106,111 @@ export default {
     cursor:pointer;
   }
   .collection-view{
+    margin-top:100px;
     padding: 0 20px;
-    border:2px solid #797D7F;
-    background: white;
-    z-index:3;
+    background: #176A83;
+    z-index:2;
     position: relative;
-    height:140px;
+    height:80px;
     border-radius:5px;
     transition: 0.2s;
+    bottom:0;
+    border-top-left-radius:0;
+  }
+  .collection-view::before{
+    content:'';
+    position: absolute;
+    background: #176A83;
+    width:40%;
+    top:-20px;
+    left:0px;
+    height:20px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
   }
   .collection-shadow-1,
+  .collection-shadow-2,
+  .collection-shadow-3{
+    position: absolute;
+    width:40%;
+    height:80%;
+    transition: 0.2s ease-out;
+    top:0px;
+    right:30%;
+    z-index:1;
+    border:1px solid #808B96;
+    background-color: white;
+    background-image:linear-gradient(lightgray 5px, transparent 0),
+    linear-gradient(lightgray 5px, transparent 0),
+    linear-gradient(lightgray 5px, transparent 0);
+    background-repeat: no-repeat;
+    background-size: 30% 100%, 80% 100%, 60% 100%;
+    background-position: 5px 8px, 5px 17px, 5px 26px;
+  }
+  .collection-shadow-1{
+    z-index:2;
+  }
   .collection-shadow-2{
-    /* background: black; */
-    /* border:2px solid transparent; */
+    right:5px;
+    transform-origin: bottom right;
+  }
+  .collection-shadow-3{
+    left:5px;
+    transform-origin: bottom left;
+  }
+  .collection-shadow-4{
     position: absolute;
     border-radius:5px;
     width:100%;
     height:100%;
     transition: 0.2s ease-out;
-    background: white;
+    bottom:0px;
+    left:0px;
+    z-index:3;
+    background: #00303F;
+    transform-origin: bottom;
   }
-  .collection-shadow-1{
-    top:0px;
-    right:0px;
+  .collection-shadow-4::before{
+    content:'';
+    position: absolute;
+    border-radius:5px;
+    width:100%;
+    height:100%;
+    transition: 0.2s ease-out;
+    bottom:0px;
+    left:0px;
     z-index:2;
-    background: #A6ACAF
+    background: #00303F;
+    transform-origin: bottom;
   }
-  .collection-shadow-2{
-    top:0px;
-    right:0px;
-    z-index:1;
-    background: #D7DBDD
-  }
-  .collection-stack:hover > .collection-view{
-    transform:translate(-10px,10px)
-  }
+  /* .collection-stack:hover > .collection-view{
+  } */
   .collection-stack:hover > .collection-shadow-1{
-    /* top:-10px;
-    right:-10px; */
+    top:-100%
   }
   .collection-stack:hover > .collection-shadow-2{
-    transform:translate(10px,-10px)
+    top:-110%;
+    transform:rotate(10deg)
+  }
+  .collection-stack:hover > .collection-shadow-3{
+    top:-110%;
+    transform:rotate(-10deg)
+  }
+  .collection-stack:hover > .collection-shadow-4{
+    transform:skewX(7deg);
+    height:90%;
+  }
+  .collection-stack:hover > .collection-shadow-4::before{
+    transform:skewX(-14deg);
+  }
+  .btn-wrapper >>> .v-btn::before{
+    background: transparent
+  }
+  .btn-wrapper >>> .v-btn{
+    font-size:0.7em;
+    color:rgba(0,0,0,0.4)
+  }
+  .btn-wrapper >>> .v-btn:hover{
+    color:#00303F
   }
 </style>

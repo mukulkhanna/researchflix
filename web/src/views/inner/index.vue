@@ -39,6 +39,13 @@
             <span class="line-3"></span>
             <span class="line-4"></span>
           </v-btn>
+          <v-btn exact-active-class="active" class="font-weight-bold" :ripple="false" exact flat :to="{path:'/profile/1'}" style="text-transform:none;position:relative;color:rgba(0,0,0,0.6);">
+            <span class="my-2 mx-3">Profile</span>
+            <span class="line-1"></span>
+            <span class="line-2"></span>
+            <span class="line-3"></span>
+            <span class="line-4"></span>
+          </v-btn>
           <v-btn exact-active-class="active" class="font-weight-bold" :ripple="false" exact flat :to="{path:'/login'}" style="text-transform:none;position:relative;color:rgba(0,0,0,0.6);">
             Sign In
           </v-btn>
@@ -104,7 +111,7 @@ export default {
   .line-4{
     position: absolute;
     background: #dcae1d;
-    transition:0.4s
+    transition:0.5s
   }
   .line-1{
     top:0;
