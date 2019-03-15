@@ -4,7 +4,7 @@
       <v-container>
         <v-layout row justify-center py-4>
           <v-flex md5>
-            <v-layout pa-5 column style="border:1px solid rgba(0,0,0,0.2);border-radius:5px;" class="elevation-3">
+            <v-layout :class="{'pa-5': $vuetify.breakpoint.mdAndUp, 'py-5': $vuetify.breakpoint.smAndDown}" column style="border:1px solid rgba(0,0,0,0.2);border-radius:5px;" class="elevation-3">
               <v-flex class="headline">
                 <router-link :to="{ path: '/'}"  style="color:#dcae1d;text-decoration:none">
                   Researchflix

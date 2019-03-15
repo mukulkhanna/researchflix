@@ -121,7 +121,7 @@ export default {
 
 <style scoped>
   .cover-photo{
-    background: teal;
+    background-image: linear-gradient(to bottom left,#FFE000, #b21f1f,#1a2a6c);;
     width:100%;
     height:324px;
   }
