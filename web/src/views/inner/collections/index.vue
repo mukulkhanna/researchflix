@@ -31,7 +31,7 @@
               <transition name="slide">
                 <v-flex v-if="!viewCollection">
                   <v-layout row wrap justify-center fill-height>
-                    <v-flex md3 sm4 xs8 v-for="(collection,i) in collections" :key="i" text-xs-center @click="viewCollection=true">
+                    <v-flex md3 sm4 xs6 v-for="(collection,i) in collections" :key="i" text-xs-center @click="viewCollection=true">
                       <div class="collection-stack">
                         <v-layout column class="collection-view">
                           <v-flex>
@@ -215,6 +215,9 @@ export default {
     font-size:0.7em;
     color:rgba(0,0,0,0.4)
   }
+  .v-btn:hover .v-icon{
+    background: rgba(0,48,63,0.1)
+  }
   .btn-wrapper >>> .v-btn:hover{
     color:#00303F
   }
@@ -234,5 +237,18 @@ export default {
     position: absolute;
     opacity: 0;
     transform: scale(0.7);
+  }
+  @media screen and (max-width: 599px) {
+    .collection-stack{
+      margin:0 38px;
+    }
+    .collection-view{
+      margin-top:60px;
+      height:40px
+    }
+    .collection-view::before{
+      top:-11px;
+      height:12px;
+    }
   }
 </style>

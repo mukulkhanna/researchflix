@@ -3,9 +3,7 @@
     <div>
       <v-navigation-drawer width="200" mobile-break-point="10240" app clipped v-model="drawer" class="hidden-sm-and-up">
         <v-list>
-          <v-list-tile>
-            Sign In
-          </v-list-tile>
+          <v-list-tile></v-list-tile>
           <v-list-tile :to="{ path: '/'}">
             Home
           </v-list-tile>
@@ -17,6 +15,9 @@
           </v-list-tile>
           <v-list-tile :to="{ path: '/profile/1'}">
             Profile
+          </v-list-tile>
+          <v-list-tile :to="{ path: '/login'}">
+            Sign In
           </v-list-tile>
         </v-list>
       </v-navigation-drawer>
@@ -127,6 +128,9 @@ export default {
   }
   .v-btn:hover{
     color:#00303F!important
+  }
+  .v-btn:hover .line-2, .v-btn:hover .line-4{
+    height:100%
   }
   .line-1,
   .line-2,
