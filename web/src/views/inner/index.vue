@@ -1,8 +1,27 @@
 <template>
   <v-app>
     <div>
-      <v-toolbar :dense="!pageScrolled" :flat="pageScrolled" app class="white" style="z-index:1000">
-        <v-toolbar-side-icon class="hidden-sm-and-up"></v-toolbar-side-icon>
+      <v-navigation-drawer width="200" mobile-break-point="10240" app clipped v-model="drawer" class="hidden-sm-and-up">
+        <v-list>
+          <v-list-tile>
+            Sign In
+          </v-list-tile>
+          <v-list-tile :to="{ path: '/'}">
+            Home
+          </v-list-tile>
+          <v-list-tile :to="{ path: '/collections/1'}">
+            Collections
+          </v-list-tile>
+          <v-list-tile :to="{ path: '/bookmarks/1'}">
+            Bookmarks
+          </v-list-tile>
+          <v-list-tile :to="{ path: '/profile/1'}">
+            Profile
+          </v-list-tile>
+        </v-list>
+      </v-navigation-drawer>
+      <v-toolbar :flat="pageScrolled" app class="white" style="z-index:1000">
+        <v-toolbar-side-icon @click.stop="drawer = !drawer" class="hidden-sm-and-up"></v-toolbar-side-icon>
         <v-toolbar-title>
           <router-link :to="{ path: '/'}"  style="color:#dcae1d;text-decoration:none">
             Researchflix
@@ -17,7 +36,7 @@
         <!-- <v-toolbar-items class="hidden-xs-only btn-wrapper">
           <v-btn :to="{path:'/login'}" flat style="background:#00303F" dark>SIGN IN</v-btn>
         </v-toolbar-items> -->
-        <v-toolbar-items>
+        <v-toolbar-items class="hidden-xs-only">
           <v-btn exact-active-class="active" class="font-weight-bold" :ripple="false" exact flat :to="{path:'/'}" style="text-transform:none;position:relative;color:rgba(0,0,0,0.6);">
             <span class="my-2 mx-3">Home</span>
             <span class="line-1"></span>
@@ -66,7 +85,8 @@ export default {
   name: 'inner',
   data () {
     return {
-      pageScrolled: true
+      pageScrolled: true,
+      drawer: null
     }
   },
   methods: {
@@ -95,7 +115,7 @@ export default {
   }
   .text-wrapper >>> .v-input__slot{
     margin-bottom:0!important;
-    width:75%;
+    width:80%;
     border:1px solid rgba(0,0,0,0.2);
     border-radius:30px!important;
   }
@@ -104,6 +124,9 @@ export default {
   }
   .v-btn::before{
     background:transparent;
+  }
+  .v-btn:hover{
+    color:#00303F!important
   }
   .line-1,
   .line-2,

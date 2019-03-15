@@ -3,7 +3,7 @@
     <v-content class="white">
       <v-container fluid>
         <v-layout row wrap justify-center text-xs-left>
-          <v-flex md2>
+          <v-flex md2 sm3 xs10>
             <v-layout column pa-4 text-xs-center>
               <v-flex>
                 <img src="https://static.vecteezy.com/system/resources/previews/000/241/069/large_2x/cool-boy-with-glasses-vector.jpg" style="max-width:100%;display:block;border-radius:50%" alt="">
@@ -13,6 +13,9 @@
               </v-flex>
               <v-flex>
                 {{user.email}}
+              </v-flex>
+              <v-flex mt-3 class="hidden-sm-and-up">
+                <v-divider></v-divider>
               </v-flex>
             </v-layout>
           </v-flex>
@@ -68,11 +71,12 @@
                               <v-btn slot="activator" icon flat style="background:#00303F;" dark>
                                 <v-icon small>bookmarks</v-icon>
                               </v-btn>
-                              <span>Bookmark</span>
+                              <span>Remove Bookmark</span>
                             </v-tooltip>
                           </v-flex>
                         </v-layout>
                       </v-flex>
+                      <div class="bookmark-hover"></div>
                     </v-layout>
                   </v-flex>
                 </v-layout>
@@ -114,9 +118,40 @@ export default {
   .paper-browse{
     border-radius:5px;
     border:1px solid rgba(0,0,0,0.2);
-    transition:0.2s
+    transition:0.2s;
+    position: relative;
   }
   .paper-browse:hover{
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+  .bookmark-hover{
+    position: absolute;
+    top:-1px;
+    right:10px;
+    width:14px;
+    height:0;
+    background: #00303F;
+    transition:0.3s;
+  }
+  .bookmark-hover::before,
+  .bookmark-hover::after{
+    content:'';
+    position: absolute;
+    top:calc(100% - 2px);
+  }
+  .paper-browse:hover > .bookmark-hover::after{
+    border-top:10px solid #00303F;
+    border-left:10px solid transparent;
+    right:0;
+    box-shadow:2px -2px 5px rgba(0,0,0,0.2)
+  }
+  .paper-browse:hover > .bookmark-hover{
+    height:26px;
+    box-shadow:2px 2px 5px rgba(0,0,0,0.2)
+  }
+  .paper-browse:hover > .bookmark-hover::before{
+    border-top:10px solid #00303F;
+    border-right:10px solid transparent;
+    left:0;
   }
 </style>

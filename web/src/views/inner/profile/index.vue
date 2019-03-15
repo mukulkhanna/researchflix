@@ -1,19 +1,19 @@
 <template>
   <v-app>
     <v-content class="white">
-      <v-container pt-0>
+      <v-container pt-0 :class="{'fluid pa-0': $vuetify.breakpoint.smAndDown}">
         <v-layout row wrap>
           <v-flex md9>
             <v-layout column text-xs-left>
               <v-flex style="position:relative">
-                <img src="https://scontent.fpat1-1.fna.fbcdn.net/v/t1.0-9/34745847_10155705749322613_7733453632833585152_n.jpg?_nc_cat=102&_nc_ht=scontent.fpat1-1.fna&oh=94f6c0e89522f4705a70f29a8c8e1f83&oe=5D261B06" alt="" style="max-width:100%;display:block">
-                <v-layout row wrap class="profile-photo">
-                  <v-flex md3 style="border-radius:50%;background:white;overflow:hidden;border:1px solid rgba(0,0,0,0.2)">
-                    <img src="https://static.vecteezy.com/system/resources/previews/000/241/069/large_2x/cool-boy-with-glasses-vector.jpg" style="max-width:100%;display:block" alt="">
+                <div class="cover-photo"></div>
+                <v-layout row wrap class="profile-photo" :class="{'justify-center': $vuetify.breakpoint.smAndDown}">
+                  <v-flex md3 xs6 style="border-radius:50%;background:white;overflow:hidden;border:1px solid rgba(0,0,0,0.2)">
+                    <img src="https://static.vecteezy.com/system/resources/previews/000/241/069/large_2x/cool-boy-with-glasses-vector.jpg" style="max-width:100%;display:block" alt="Profile Photo">
                   </v-flex>
                 </v-layout>
-                <v-layout row wrap class="cover-shadow" pt-3 pb-2>
-                  <v-flex md2 offset-md5>
+                <v-layout row wrap class="cover-shadow" pt-3 pb-2 :class="{'pt-5 text-xs-center': $vuetify.breakpoint.smAndDown}">
+                  <v-flex md2 xs4 offset-md5>
                     <div class="title">
                       {{user.papersViewed}}
                     </div>
@@ -21,7 +21,7 @@
                       Papers Viewed
                     </div>
                   </v-flex>
-                  <v-flex md2>
+                  <v-flex md2 xs4>
                     <div class="title">
                       {{user.collectionsAdded}}
                     </div>
@@ -29,7 +29,7 @@
                       Collections Added
                     </div>
                   </v-flex>
-                  <v-flex md2>
+                  <v-flex md2 xs4>
                     <div class="title">
                       {{user.papersBookmarked}}
                     </div>
@@ -40,8 +40,8 @@
                 </v-layout>
               </v-flex>
               <v-flex mt-4 pt-2>
-                <v-layout row wrap justify-end>
-                  <v-flex md8>
+                <v-layout row wrap justify-end :class="{'pl-3': $vuetify.breakpoint.smAndDown}">
+                  <v-flex md8 xs12>
                     <v-layout column>
                       <v-flex pl-3 class="headline">
                         {{user.name}}
@@ -55,36 +55,36 @@
               </v-flex>
               <v-flex mt-4>
                 <v-layout row wrap justify-end>
-                  <v-flex md10>
-                    <div class="user-options">
+                  <v-flex md10 xs12>
+                    <div class="user-options mb-4">
                       <v-layout column py-4>
                         <v-flex>
                           <v-layout row wrap align-center>
-                            <v-flex md2 pr-5>
+                            <v-flex md2 xs1 :class="{'pr-5': $vuetify.breakpoint.mdAndUp}">
                               <v-divider></v-divider>
                             </v-flex>
-                            <v-flex md4>
+                            <v-flex md4 xs9 :class="{'px-2': $vuetify.breakpoint.smAndDown}">
                               <v-btn flat style="background:#00303F;border-radius:10px" block dark>change password</v-btn>
                             </v-flex>
                           </v-layout>
                         </v-flex>
                         <v-flex mt-3>
                           <v-layout row wrap align-center>
-                            <v-flex md2 pr-5>
+                            <v-flex md2 xs1 :class="{'pr-5': $vuetify.breakpoint.mdAndUp}">
                               <v-divider></v-divider>
                             </v-flex>
-                            <v-flex md4>
-                              <v-btn :to="{path:'/collections'}" flat style="background:#00303F;border-radius:10px" block dark>view collections</v-btn>
+                            <v-flex md4 xs9 :class="{'px-2': $vuetify.breakpoint.smAndDown}">
+                              <v-btn :to="{path:'/collections/1'}" flat style="background:#00303F;border-radius:10px" block dark>view collections</v-btn>
                             </v-flex>
                           </v-layout>
                         </v-flex>
                         <v-flex mt-3>
                           <v-layout row wrap align-center>
-                            <v-flex md2 pr-5>
+                            <v-flex md2 xs1 :class="{'pr-5': $vuetify.breakpoint.mdAndUp}">
                               <v-divider></v-divider>
                             </v-flex>
-                            <v-flex md4>
-                              <v-btn :to="{path:'/bookmarks'}" flat style="background:#00303F;border-radius:10px" block dark>view bookmarks</v-btn>
+                            <v-flex md4 xs9 :class="{'px-2': $vuetify.breakpoint.smAndDown}">
+                              <v-btn :to="{path:'/bookmarks/1'}" flat style="background:#00303F;border-radius:10px" block dark>view bookmarks</v-btn>
                             </v-flex>
                           </v-layout>
                         </v-flex>
@@ -120,6 +120,11 @@ export default {
 </script>
 
 <style scoped>
+  .cover-photo{
+    background: teal;
+    width:100%;
+    height:324px;
+  }
   .profile-photo{
     position: absolute;
     top:100%;
@@ -139,5 +144,14 @@ export default {
   .user-options{
     border-left:2px solid rgba(0,0,0,0.2);
     margin-left:40px;
+  }
+  @media screen and (max-width: 599px) {
+    .profile-photo{
+      top:50%;
+      left:0;
+    }
+    .cover-photo{
+      height: 350px;
+    }
   }
 </style>

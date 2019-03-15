@@ -28,34 +28,38 @@
                 </v-btn>
                 <span v-if="!viewCollection">Collections</span>
               </v-flex>
-              <v-flex v-if="!viewCollection">
-                <v-layout row wrap fill-height>
-                  <v-flex md3 sm4 v-for="(collection,i) in collections" :key="i" text-xs-center @click="viewCollection=true">
-                    <div class="collection-stack">
-                      <v-layout column class="collection-view">
-                        <v-flex>
-                        </v-flex>
-                      </v-layout>
-                      <div class="collection-shadow-1"></div>
-                      <div class="collection-shadow-2"></div>
-                      <div class="collection-shadow-3"></div>
-                      <div class="collection-shadow-4"></div>
-                    </div>
-                    <v-layout row wrap>
-                      <v-flex>
-                        <v-layout column>
+              <transition name="slide">
+                <v-flex v-if="!viewCollection">
+                  <v-layout row wrap justify-center fill-height>
+                    <v-flex md3 sm4 xs8 v-for="(collection,i) in collections" :key="i" text-xs-center @click="viewCollection=true">
+                      <div class="collection-stack">
+                        <v-layout column class="collection-view">
                           <v-flex>
-                            {{collection.name}}
                           </v-flex>
                         </v-layout>
-                      </v-flex>
-                    </v-layout>
-                  </v-flex>
-                </v-layout>
-              </v-flex>
-              <v-flex v-else>
-                <viewCollection></viewCollection>
-              </v-flex>
+                        <div class="collection-shadow-1"></div>
+                        <div class="collection-shadow-2"></div>
+                        <div class="collection-shadow-3"></div>
+                        <div class="collection-shadow-4"></div>
+                      </div>
+                      <v-layout row wrap>
+                        <v-flex>
+                          <v-layout column>
+                            <v-flex>
+                              {{collection.name}}
+                            </v-flex>
+                          </v-layout>
+                        </v-flex>
+                      </v-layout>
+                    </v-flex>
+                  </v-layout>
+                </v-flex>
+              </transition>
+              <transition name="slide">
+                <v-flex v-if="viewCollection">
+                  <viewCollection></viewCollection>
+                </v-flex>
+              </transition>
             </v-layout>
           </v-flex>
         </v-layout>
@@ -101,7 +105,7 @@ export default {
 
 <style scoped>
   .collection-stack{
-    margin:20px 30px;
+    margin:20px 50px;
     position: relative;
     cursor:pointer;
   }
@@ -111,7 +115,7 @@ export default {
     background: #176A83;
     z-index:2;
     position: relative;
-    height:80px;
+    height:60px;
     border-radius:5px;
     transition: 0.2s;
     bottom:0;
@@ -122,9 +126,9 @@ export default {
     position: absolute;
     background: #176A83;
     width:40%;
-    top:-20px;
+    top:-14px;
     left:0px;
-    height:20px;
+    height:15px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
   }
@@ -132,8 +136,8 @@ export default {
   .collection-shadow-2,
   .collection-shadow-3{
     position: absolute;
-    width:40%;
-    height:80%;
+    width:50%;
+    height:100%;
     transition: 0.2s ease-out;
     top:0px;
     right:30%;
@@ -163,7 +167,7 @@ export default {
     border-radius:5px;
     width:100%;
     height:100%;
-    transition: 0.2s ease-out;
+    transition: 0.3s ease-out;
     bottom:0px;
     left:0px;
     z-index:3;
@@ -179,21 +183,22 @@ export default {
     transition: 0.2s ease-out;
     bottom:0px;
     left:0px;
-    z-index:2;
     background: #00303F;
     transform-origin: bottom;
   }
   /* .collection-stack:hover > .collection-view{
   } */
   .collection-stack:hover > .collection-shadow-1{
-    top:-100%
+    top:-120%
   }
   .collection-stack:hover > .collection-shadow-2{
-    top:-110%;
+    top:-125%;
+    right:-10px;
     transform:rotate(10deg)
   }
   .collection-stack:hover > .collection-shadow-3{
-    top:-110%;
+    top:-125%;
+    left:-15px;
     transform:rotate(-10deg)
   }
   .collection-stack:hover > .collection-shadow-4{
@@ -212,5 +217,22 @@ export default {
   }
   .btn-wrapper >>> .v-btn:hover{
     color:#00303F
+  }
+  .slide-enter-active,
+  .slide-leave-active {
+    transition: opacity 0.5s, transform 0.5s;
+    transform-origin: center left;
+  }
+  .slide-enter,
+  .slide-leave-to {
+    opacity: 0;
+    transform: scale(0.7);
+    position: absolute;
+  }
+  .slide-leave,
+  .slide-enter-to{
+    position: absolute;
+    opacity: 0;
+    transform: scale(0.7);
   }
 </style>

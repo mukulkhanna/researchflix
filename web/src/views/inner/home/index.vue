@@ -10,13 +10,13 @@
               </v-flex>
               <v-flex mt-4 text-xs-center>
                 <v-layout row wrap align-center justify-center>
-                  <v-flex md1>
+                  <v-flex md1 xs2>
                     <v-btn icon large v-if="!paperView" @click="leftScroll">
                       <v-icon x-large>arrow_left</v-icon>
                     </v-btn>
                   </v-flex>
                   <transition name="slide">
-                    <v-flex v-if="!paperView" id="paperScroller" md10 style="display:flex;overflow-x:auto;position:relative;overflow-y:hidden">
+                    <v-flex xs8 v-if="!paperView" id="paperScroller" md10 style="display:flex;overflow-x:auto;position:relative;overflow-y:hidden">
                       <div v-for="(paper,i) in papers" :key="i" class="paper-browse">
                         <img src="https://i1.rgstatic.net/publication/2255973_Access_and_Retrieval_from_Image_Databases_Using_Image_Thumbnails/links/5498b60f0cf2eeefc30f9c6e/largepreview.png" alt="" style="height:100%">
                         <div class="paper-arrow">
@@ -48,7 +48,7 @@
                         <v-layout row wrap fill-height>
                           <v-flex md3 style="position:relative;">
                             <v-btn color="grey lighten-1" style="position:absolute;top:0;left:0" @click="paperView=false" icon>
-                              <v-icon>chevron_left</v-icon>
+                              <v-icon>arrow_back</v-icon>
                             </v-btn>
                             <img src="https://i1.rgstatic.net/publication/2255973_Access_and_Retrieval_from_Image_Databases_Using_Image_Thumbnails/links/5498b60f0cf2eeefc30f9c6e/largepreview.png" alt="" style="width:100%">
                           </v-flex>
@@ -98,7 +98,7 @@
                       </div>
                     </v-flex>
                   </transition>
-                  <v-flex md1>
+                  <v-flex md1 xs2>
                     <v-btn icon large v-if="!paperView" @click="rightScroll">
                       <v-icon x-large>arrow_right</v-icon>
                     </v-btn>
@@ -109,12 +109,12 @@
           </v-flex>
           <v-flex my-5>
             <v-layout column>
-              <v-flex pl-4 class="subheading">
+              <v-flex :class="{'pl-4': $vuetify.breakpoint.mdAndUp}" class="subheading">
                 Or choose a topic of interest
               </v-flex>
-              <v-flex mt-4 px-3>
+              <v-flex mt-4 :class="{'px-3': $vuetify.breakpoint.mdAndUp}">
                 <v-layout row wrap>
-                  <v-flex md2 pr-5 v-for="(topic,i) in topics" :key="i">
+                  <v-flex md2 sm4 xs12 :class="{'px-5': $vuetify.breakpoint.smAndDown, 'pr-5': $vuetify.breakpoint.mdAndUp}" v-for="(topic,i) in topics" :key="i">
                     <v-btn :to="{path:'/topic/'+topic.id}" block dark style="background:#00303F;border-radius:10px" flat>
                       {{topic.name}}
                     </v-btn>
