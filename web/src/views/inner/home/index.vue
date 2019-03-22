@@ -173,6 +173,28 @@ export default {
       var container = this.$el.querySelector('#paperScroller')
       container.scrollLeft = container.scrollLeft + 200
     }
+  },
+  created () {
+    let that = this
+    this.$axios.get(this.$store.getters.getBaseUrl + '/api/home', {
+      params: {
+        token: localStorage.getItem(token)
+      }
+    })
+      .then((res) => {
+        if (res.data.success) {
+          that.papers = res.data.papers
+          that.topics = res.data.topics
+        } else {
+          var payload = {
+            content: res.data.reason
+          }
+          this.$store.dispatch('createSnackbar', payload)
+        }
+      })
+      .catch(() => {
+        that.$store.dispatch('networkError')
+      })
   }
 }
 </script>

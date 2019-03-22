@@ -7,10 +7,13 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
-    },
-  "pre-commit": [ "lint" ],
+  },
+  "pre-commit": [
+    "lint"
+  ],
   "dependencies": {
     "@babel/polyfill": "^7.0.0-rc.1",
+    "axios": "^0.18.0",
     "material-design-icons-iconfont": "^4.0.5",
     "vue": "^2.6.6",
     "vue-router": "^3.0.1",
@@ -20,8 +23,8 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.4.0",
     "@vue/cli-plugin-eslint": "^3.4.0",
-    "@vue/cli-plugin-unit-jest": "^3.5.0",
-    "@vue/cli-service": "^3.4.0",
+    "@vue/cli-plugin-unit-jest": "^3.5.1",
+    "@vue/cli-service": "^3.5.1",
     "@vue/eslint-config-standard": "^4.0.0",
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-core": "7.0.0-bridge.0",

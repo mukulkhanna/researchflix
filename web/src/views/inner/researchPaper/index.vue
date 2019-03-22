@@ -166,6 +166,29 @@ export default {
       var container = this.$el.querySelector('#paperScroller')
       container.scrollLeft = container.scrollLeft + 200
     }
+  },
+  created () {
+    let that = this
+    this.$axios.get(this.$store.getters.getBaseUrl + '/api/researchPaper', {
+      params: {
+        token: localStorage.getItem(token),
+        id: this.$route.query.pid
+      }
+    })
+      .then((res) => {
+        if (res.data.success) {
+          that.paper = res.data.paper
+          that.relatedPapers = res.data.relatedPapers
+        } else {
+          var payload = {
+            content: res.data.reason
+          }
+          this.$store.dispatch('createSnackbar', payload)
+        }
+      })
+      .catch(() => {
+        that.$store.dispatch('networkError')
+      })
   }
 }
 </script>

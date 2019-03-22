@@ -110,6 +110,28 @@ export default {
         { pid: 7, title: 'Reconciling Embodied and Distributional Accounts of Meaning in Language', authors: ['Mark Andrews', 'Stefan Frank', 'Gabriella Vigliocco'], publisher: 'IEEE', pages: 15, dop: '2014', tags: ['Psychology', 'Cognitive psychology', 'Epistemology', 'Computer Science'] }
       ]
     }
+  },
+  created () {
+    let that = this
+    this.$axios.get(this.$store.getters.getBaseUrl + '/api/bookmarks', {
+      params: {
+        token: localStorage.getItem(token)
+      }
+    })
+      .then((res) => {
+        if (res.data.success) {
+          that.user = res.data.user
+          that.papers = res.data.papers
+        } else {
+          var payload = {
+            content: res.data.reason
+          }
+          this.$store.dispatch('createSnackbar', payload)
+        }
+      })
+      .catch(() => {
+        that.$store.dispatch('networkError')
+      })
   }
 }
 </script>

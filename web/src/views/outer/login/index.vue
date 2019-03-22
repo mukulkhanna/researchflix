@@ -13,12 +13,12 @@
               <v-flex mt-4 px-3>
                 <v-layout column>
                   <v-flex>
-                    <v-form>
+                    <v-form v-model="valid">
                       <div class="text-wrapper">
-                        <v-text-field solo flat v-model="user.email" placeholder="Email Address"></v-text-field>
+                        <v-text-field solo flat v-model="user.email" :rules="emailRules" placeholder="Email Address"></v-text-field>
                       </div>
                       <div class="text-wrapper">
-                        <v-text-field solo flat v-model="user.password" type="password" placeholder="password"></v-text-field>
+                        <v-text-field solo flat v-model="user.password" :rules="passwordRules" type="password" placeholder="password"></v-text-field>
                       </div>
                       <v-layout row wrap align-center>
                         <v-flex md6 xs12 class="checkbox-wrapper">
@@ -28,7 +28,7 @@
                           Forgot Password?
                         </v-flex>
                       </v-layout>
-                      <v-btn class="mt-4" flat style="background:#00303F;border-radius:10px" dark block>sign in</v-btn>
+                      <v-btn class="mt-4" :loading="loading" :disabled="!valid" flat style="background:#00303F;border-radius:10px" dark block>sign in</v-btn>
                     </v-form>
                   </v-flex>
                   <v-flex mt-2 class="font-weight-bold subheading">
@@ -57,7 +57,49 @@ export default {
         email: '',
         password: ''
       },
-      remember: false
+      loading: false,
+      remember: false,
+      valid: true,
+      emailRules: [
+        v => !!v || 'E-mail is required',
+        v => /.+@.+/.test(v) || 'E-mail must be valid'
+      ],
+      passwordRules: [
+        v => !!v || 'Password is required',
+        v => (v && v.length >= 8) || 'Password must be at least 8 characters long.'
+      ]
+    }
+  },
+  methods: {
+    login () {
+      var that = this
+      if (this.valid) {
+        this.loading = true
+        var email = this.user.email.trim()
+        var password = this.user.password
+        this.$axios.post(this.$store.getters.getBaseUrl + '/auth/login', {
+          email, password
+        })
+          .then((res) => {
+            if (res.data.success) {
+              var token = res.data.token
+              localStorage.setItem('token', token)
+              this.$store.dispatch('createSnackbar', {
+                content: 'Welcome Back!'
+              })
+              this.$router.push('/')
+            } else {
+              var payload = {
+                content: res.data.reason
+              }
+              this.$store.dispatch('createSnackbar', payload)
+              this.loading = false
+            }
+          })
+          .catch(() => {
+            that.$store.dispatch('networkError')
+          })
+      }
     }
   }
 }

@@ -110,10 +110,10 @@ export default {
 </script>
 
 <style scoped>
-  .btn-wrapper >>> .v-btn{
+  /* .btn-wrapper >>> .v-btn{
     height:60%!important;
     border-radius:10px;
-  }
+  } */
   .text-wrapper >>> .v-input__slot{
     margin-bottom:0!important;
     width:80%;

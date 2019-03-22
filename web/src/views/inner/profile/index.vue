@@ -115,13 +115,34 @@ export default {
         papersBookmarked: 75
       }
     }
+  },
+  created () {
+    let that = this
+    this.$axios.get(this.$store.getters.getBaseUrl + '/api/profile', {
+      params: {
+        token: localStorage.getItem(token)
+      }
+    })
+      .then((res) => {
+        if (res.data.success) {
+          that.user = res.data.user
+        } else {
+          var payload = {
+            content: res.data.reason
+          }
+          this.$store.dispatch('createSnackbar', payload)
+        }
+      })
+      .catch(() => {
+        that.$store.dispatch('networkError')
+      })
   }
 }
 </script>
 
 <style scoped>
   .cover-photo{
-    background-image: linear-gradient(to bottom left,#FFE000, #b21f1f,#1a2a6c);;
+    background-image: linear-gradient(to bottom left,#FFE000, #b21f1f,#1a2a6c);
     width:100%;
     height:324px;
   }

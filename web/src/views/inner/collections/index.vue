@@ -31,7 +31,7 @@
               <transition name="slide">
                 <v-flex v-if="!viewCollection">
                   <v-layout row wrap justify-center fill-height>
-                    <v-flex md3 sm4 xs6 v-for="(collection,i) in collections" :key="i" text-xs-center @click="viewCollection=true">
+                    <v-flex md3 sm4 xs6 v-for="(collection,i) in collections" :key="i" text-xs-center @click="viewCollection=true, collectionId=collection.id">
                       <div class="collection-stack">
                         <v-layout column class="collection-view">
                           <v-flex>
@@ -57,7 +57,7 @@
               </transition>
               <transition name="slide">
                 <v-flex v-if="viewCollection">
-                  <viewCollection></viewCollection>
+                  <viewCollection :collectionId="collectionId"></viewCollection>
                 </v-flex>
               </transition>
             </v-layout>
@@ -95,17 +95,40 @@ export default {
         { id: 7, name: 'Techno Savvy', paperCount: 1 },
         { id: 7, name: 'Techno Savvy', paperCount: 1 },
         { id: 7, name: 'Techno Savvy', paperCount: 1 }
-
       ],
+      collectionId: null,
       viewCollection: false
     }
+  },
+  created () {
+    let that = this
+    this.$axios.get(this.$store.getters.getBaseUrl + '/api/collections', {
+      params: {
+        token: localStorage.getItem(token)
+      }
+    })
+      .then((res) => {
+        if (res.data.success) {
+          that.user = res.data.user
+          that.collections = res.data.collections
+        } else {
+          var payload = {
+            content: res.data.reason
+          }
+          this.$store.dispatch('createSnackbar', payload)
+        }
+      })
+      .catch(() => {
+        that.$store.dispatch('networkError')
+      })
   }
 }
 </script>
 
 <style scoped>
   .collection-stack{
-    margin:20px 50px;
+    margin:20px auto;
+    width:100px;
     position: relative;
     cursor:pointer;
   }
@@ -240,7 +263,7 @@ export default {
   }
   @media screen and (max-width: 599px) {
     .collection-stack{
-      margin:0 38px;
+      width: 75px;
     }
     .collection-view{
       margin-top:60px;
