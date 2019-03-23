@@ -87,7 +87,7 @@ export default {
     let that = this
     this.$axios.get(this.$store.getters.getBaseUrl + '/api/collections/papers', {
       params: {
-        token: localStorage.getItem(token),
+        token: localStorage.getItem('token'),
         id: this.collectionId
       }
     })

@@ -178,7 +178,7 @@ export default {
     let that = this
     this.$axios.get(this.$store.getters.getBaseUrl + '/api/home', {
       params: {
-        token: localStorage.getItem(token)
+        token: localStorage.getItem('token')
       }
     })
       .then((res) => {
