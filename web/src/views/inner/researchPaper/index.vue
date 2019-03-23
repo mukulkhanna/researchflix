@@ -207,7 +207,7 @@ export default {
   }
   .paper-details{
     position:absolute;
-    top:-100%;
+    top:0;
     left:0;
     height:100%;
     width:100%;
@@ -223,7 +223,7 @@ export default {
     left:50%;
     transform:translate(-50%,-50%);
   }
-  .paper-browse:hover > .paper-details{
+  /* .paper-browse:hover > .paper-details{
     top:0;
-  }
+  } */
 </style>

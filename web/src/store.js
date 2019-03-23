@@ -29,7 +29,7 @@ export default new Vuex.Store({
     },
     networkError (state) {
       state.snackbar.state = true
-      state.snackbar.color = 'red'
+      state.snackbar.color = 'error'
       state.snackbar.content = 'Network Error'
       state.snackbar.time = 0
     }
